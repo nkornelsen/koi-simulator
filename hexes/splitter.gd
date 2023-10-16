@@ -136,3 +136,15 @@ func _switch_direction():
 
 func _process(delta):
 	pass
+
+func _get_data():
+	var out = str(rot_direction) + " " + str(in_side) + " "
+	for i in 6:
+		out += "T " if out_dirs[i] else "F "
+	return out
+
+func _read_data(values):
+	self.rot_direction = int(values[0])
+	self.in_side = int(values[1])
+	for i in 6:
+		self.out_dirs[i] = true if values[i+2] == "T" else false
