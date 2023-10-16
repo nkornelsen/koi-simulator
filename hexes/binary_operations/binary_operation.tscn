@@ -1,0 +1,74 @@
+[gd_scene load_steps=4 format=3 uid="uid://cb4h4m3t6ug4m"]
+
+[ext_resource type="PackedScene" uid="uid://ba7vu4lm7v3u7" path="res://base_hexagon.tscn" id="1_qsudo"]
+[ext_resource type="Script" path="res://hexes/binary_operations/binary_operation.gd" id="2_3odhf"]
+[ext_resource type="Texture2D" uid="uid://dxpaaysspt0c5" path="res://Overlays/route_off2.png" id="3_c6k38"]
+
+[node name="BinaryOperation" instance=ExtResource("1_qsudo")]
+script = ExtResource("2_3odhf")
+direction = 1
+in_a = 3
+in_b = 0
+
+[node name="DirectionIndicators" type="Node2D" parent="." index="2"]
+
+[node name="A" type="TextureRect" parent="DirectionIndicators" index="0"]
+offset_left = -250.0
+offset_top = -288.0
+offset_right = 250.0
+offset_bottom = 289.0
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(250, 288)
+mouse_filter = 2
+texture = ExtResource("3_c6k38")
+
+[node name="B" type="TextureRect" parent="DirectionIndicators" index="1"]
+offset_left = -250.0
+offset_top = -288.0
+offset_right = 250.0
+offset_bottom = 289.0
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(250, 288)
+mouse_filter = 2
+texture = ExtResource("3_c6k38")
+
+[node name="InputLabels" type="Node2D" parent="." index="3"]
+
+[node name="A" type="Label" parent="InputLabels" index="0"]
+offset_left = -20.0
+offset_top = -36.0
+offset_right = 20.0
+offset_bottom = 36.0
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(20, 36)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "A"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="B" type="Label" parent="InputLabels" index="1"]
+offset_left = -20.0
+offset_top = -36.0
+offset_right = 20.0
+offset_bottom = 36.0
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(20, 36)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "B"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="OpLabel" type="Label" parent="." index="4"]
+offset_left = -35.0
+offset_top = -36.0
+offset_right = 35.0
+offset_bottom = 36.0
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(35, 36)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "OP"
+horizontal_alignment = 1
+vertical_alignment = 1

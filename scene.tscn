@@ -1,0 +1,813 @@
+[gd_scene load_steps=52 format=3 uid="uid://c7htc8d77n8dg"]
+
+[ext_resource type="Shader" path="res://background.gdshader" id="1_6ytth"]
+[ext_resource type="Script" path="res://grid_panning.gd" id="1_035km"]
+[ext_resource type="Script" path="res://camera_control.gd" id="1_gci1n"]
+[ext_resource type="Script" path="res://bg_editor_hide.gd" id="1_lcp3p"]
+[ext_resource type="Script" path="res://mode_control.gd" id="1_o7vt8"]
+[ext_resource type="Script" path="res://background.gd" id="2_dx1tw"]
+[ext_resource type="Script" path="res://hex_select.gd" id="4_rfb0h"]
+[ext_resource type="Script" path="res://tile_manager.gd" id="7_ra5br"]
+[ext_resource type="Script" path="res://timer_control.gd" id="8_ckhd6"]
+[ext_resource type="Script" path="res://EditMode/EditMode.gd" id="19_4ko6u"]
+[ext_resource type="Texture2D" uid="uid://cdhi1pg0gucsj" path="res://hexagon_selection_overlay.png" id="20_2ucgi"]
+[ext_resource type="Script" path="res://EditMode/tree_selector.gd" id="20_apkja"]
+[ext_resource type="Texture2D" uid="uid://df0jh0j3gp4fe" path="res://circle_icons/new_hex/new_hex_normal.svg" id="22_35lhj"]
+[ext_resource type="Script" path="res://edit_buttons.gd" id="22_buril"]
+[ext_resource type="Texture2D" uid="uid://b5cfojx73wc8m" path="res://circle_icons/new_hex/new_hex_active.svg" id="23_njkw8"]
+[ext_resource type="Texture2D" uid="uid://cnmijl22ppvq" path="res://circle_icons/new_hex/new_hex_hover.svg" id="24_6bfdw"]
+[ext_resource type="Texture2D" uid="uid://bq6hacvkx1a23" path="res://circle_icons/edit/edit_normal.png" id="25_8k5ic"]
+[ext_resource type="Script" path="res://edit_tool_button.gd" id="25_33unk"]
+[ext_resource type="Texture2D" uid="uid://br100w4603a2v" path="res://circle_icons/edit/edit_active.png" id="26_a3fbf"]
+[ext_resource type="Texture2D" uid="uid://cyunn4lnmk3xr" path="res://circle_icons/edit/edit_hover.png" id="27_5hfom"]
+[ext_resource type="Texture2D" uid="uid://xgiddws1yc5g" path="res://circle_icons/add_koi/add_koi_normal.png" id="28_nakys"]
+[ext_resource type="Texture2D" uid="uid://de7ee4w3mc80b" path="res://circle_icons/add_koi/add_koi_active.png" id="29_mikc2"]
+[ext_resource type="Texture2D" uid="uid://gkwd4bmheeg5" path="res://circle_icons/add_koi/add_koi_hover.png" id="30_5td7f"]
+[ext_resource type="Script" path="res://hex_editor.gd" id="33_76jg6"]
+[ext_resource type="Texture2D" uid="uid://cfdek0b1txiem" path="res://circle_icon.png" id="34_at11c"]
+[ext_resource type="Script" path="res://SpeedControl.gd" id="35_r5fbo"]
+[ext_resource type="Script" path="res://koi_value.gd" id="36_bo4ho"]
+[ext_resource type="Texture2D" uid="uid://dg2tbro23qbto" path="res://Overlays/edge_handle.png" id="37_eaitb"]
+[ext_resource type="Script" path="res://EditHandles.gd" id="37_ij0gi"]
+[ext_resource type="Script" path="res://grab_handle.gd" id="39_o0tio"]
+[ext_resource type="Script" path="res://menu_controls.gd" id="40_5fgra"]
+[ext_resource type="Script" path="res://cond_editor.gd" id="40_5tftu"]
+[ext_resource type="Script" path="res://console_control.gd" id="40_mjxef"]
+[ext_resource type="Script" path="res://const_input.gd" id="40_ydx6f"]
+[ext_resource type="Texture2D" uid="uid://cydhbbhkbk7vn" path="res://Overlays/rotation_switch.png" id="41_uaoqn"]
+[ext_resource type="Texture2D" uid="uid://dupdgwuinrebi" path="res://Overlays/edit_icon.png" id="42_nkegk"]
+[ext_resource type="Script" path="res://mem_editor.gd" id="43_m5jr0"]
+[ext_resource type="Script" path="res://mouse_hover.gd" id="44_1t3cb"]
+[ext_resource type="Script" path="res://mem_editor_scroll_container.gd" id="44_xr1we"]
+[ext_resource type="Script" path="res://KoiHandles.gd" id="47_jdq35"]
+[ext_resource type="Script" path="res://koi_button.gd" id="48_jr1aa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pwdfj"]
+shader = ExtResource("1_6ytth")
+shader_parameter/rect_size = Vector2(1281, 721)
+shader_parameter/grid_offset = Vector2(0, 0)
+shader_parameter/hex_width = 100.0
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_m45uw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4sjn1"]
+bg_color = Color(0.403922, 0.439216, 0.941176, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6k4t1"]
+bg_color = Color(0.403922, 0.439216, 0.941176, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l5q8c"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1fxl0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qfwq0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i2xfu"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_i8pxa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_xcuic"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_o7vt8")
+
+[node name="BG" type="CanvasLayer" parent="."]
+layer = -2
+visible = false
+script = ExtResource("1_lcp3p")
+
+[node name="GridViewControl" type="Node" parent="BG"]
+script = ExtResource("1_035km")
+
+[node name="GridBackground" type="TextureRect" parent="BG"]
+material = SubResource("ShaderMaterial_pwdfj")
+custom_minimum_size = Vector2(1, 1)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 1.0
+offset_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("CanvasTexture_m45uw")
+stretch_mode = 1
+script = ExtResource("2_dx1tw")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(640, 360)
+ignore_rotation = false
+script = ExtResource("1_gci1n")
+
+[node name="Tiles" type="Node" parent="."]
+script = ExtResource("7_ra5br")
+
+[node name="Koi" type="Node" parent="."]
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+script = ExtResource("8_ckhd6")
+
+[node name="EditMode" type="Control" parent="."]
+z_index = 1
+anchors_preset = 0
+mouse_filter = 2
+script = ExtResource("19_4ko6u")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="EditMode"]
+layer = 2
+
+[node name="Coords" type="Label" parent="EditMode/CanvasLayer"]
+offset_top = 33.0
+offset_right = 142.0
+offset_bottom = 89.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 15
+text = "Hello World
+test"
+script = ExtResource("4_rfb0h")
+
+[node name="Label" type="Label" parent="EditMode/CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -87.0
+offset_top = 35.0
+offset_bottom = 61.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "EDIT MODE"
+
+[node name="Tree" type="Tree" parent="EditMode/CanvasLayer"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -303.0
+offset_right = 162.0
+grow_vertical = 0
+hide_root = true
+script = ExtResource("20_apkja")
+
+[node name="HexEditor" type="Node" parent="EditMode/CanvasLayer"]
+script = ExtResource("33_76jg6")
+
+[node name="EditButtons" type="Control" parent="EditMode/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -427.0
+offset_top = 82.0
+offset_right = -8.0
+offset_bottom = 133.0
+grow_horizontal = 0
+script = ExtResource("22_buril")
+
+[node name="NewHex" type="TextureButton" parent="EditMode/CanvasLayer/EditButtons"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -58.0
+offset_top = -14.0
+offset_right = -8.0
+offset_bottom = -15.0
+grow_horizontal = 0
+grow_vertical = 2
+toggle_mode = true
+texture_normal = ExtResource("22_35lhj")
+texture_pressed = ExtResource("23_njkw8")
+texture_hover = ExtResource("24_6bfdw")
+script = ExtResource("25_33unk")
+
+[node name="Edit" type="TextureButton" parent="EditMode/CanvasLayer/EditButtons"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -118.0
+offset_top = -15.0
+offset_right = -68.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 2
+toggle_mode = true
+texture_normal = ExtResource("25_8k5ic")
+texture_pressed = ExtResource("26_a3fbf")
+texture_hover = ExtResource("27_5hfom")
+script = ExtResource("25_33unk")
+toolname = 1
+
+[node name="AddKoi" type="TextureButton" parent="EditMode/CanvasLayer/EditButtons"]
+layout_mode = 1
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -178.0
+offset_top = -15.0
+offset_right = -128.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 2
+toggle_mode = true
+texture_normal = ExtResource("28_nakys")
+texture_pressed = ExtResource("29_mikc2")
+texture_hover = ExtResource("30_5td7f")
+script = ExtResource("25_33unk")
+toolname = 2
+
+[node name="SpeedLabel" type="Label" parent="EditMode/CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -318.0
+offset_top = 126.0
+offset_right = -3.0
+offset_bottom = 146.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "Speed"
+
+[node name="SpeedDisplay" type="Label" parent="EditMode/CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -174.0
+offset_top = 127.0
+offset_right = -4.0
+offset_bottom = 147.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 12
+text = "1x"
+horizontal_alignment = 2
+
+[node name="SpeedControl" type="HSlider" parent="EditMode/CanvasLayer"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -316.0
+offset_top = 142.0
+offset_right = -3.0
+offset_bottom = 192.0
+grow_horizontal = 0
+theme_override_icons/grabber = ExtResource("34_at11c")
+theme_override_icons/grabber_highlight = ExtResource("34_at11c")
+theme_override_styles/grabber_area = SubResource("StyleBoxFlat_4sjn1")
+theme_override_styles/grabber_area_highlight = SubResource("StyleBoxFlat_6k4t1")
+min_value = 0.1
+max_value = 40.0
+step = 0.1
+value = 1.0
+scrollable = false
+script = ExtResource("35_r5fbo")
+
+[node name="KoiValue" type="Control" parent="EditMode/CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_lock_ = true
+
+[node name="Input" type="LineEdit" parent="EditMode/CanvasLayer/KoiValue"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -274.0
+offset_top = 219.0
+offset_right = -16.0
+offset_bottom = 250.0
+grow_horizontal = 0
+text = "0"
+script = ExtResource("36_bo4ho")
+
+[node name="Label" type="Label" parent="EditMode/CanvasLayer/KoiValue"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -274.0
+offset_top = 189.0
+offset_right = -29.0
+offset_bottom = 215.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Koi Value:"
+
+[node name="SelectionOverlay" type="TextureRect" parent="EditMode"]
+layout_mode = 0
+offset_left = -255.0
+offset_top = -294.0
+offset_right = 255.0
+offset_bottom = 294.0
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(255, 294)
+mouse_filter = 2
+texture = ExtResource("20_2ucgi")
+
+[node name="EditHandles" type="Node2D" parent="EditMode"]
+script = ExtResource("37_ij0gi")
+
+[node name="MemoryEditList" type="CanvasLayer" parent="EditMode/EditHandles"]
+
+[node name="Controller" type="Control" parent="EditMode/EditHandles/MemoryEditList"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("43_m5jr0")
+metadata/_edit_lock_ = true
+
+[node name="Header" type="HBoxContainer" parent="EditMode/EditHandles/MemoryEditList/Controller"]
+layout_mode = 0
+offset_left = 1029.0
+offset_top = 213.0
+offset_right = 1253.0
+offset_bottom = 244.0
+alignment = 2
+
+[node name="Counter" type="Label" parent="EditMode/EditHandles/MemoryEditList/Controller/Header"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "0 Items"
+
+[node name="Plus" type="Button" parent="EditMode/EditHandles/MemoryEditList/Controller/Header"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "+"
+
+[node name="Minus" type="Button" parent="EditMode/EditHandles/MemoryEditList/Controller/Header"]
+custom_minimum_size = Vector2(30, 0)
+layout_mode = 2
+text = "-"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="EditMode/EditHandles/MemoryEditList/Controller"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -269.0
+offset_top = -469.0
+offset_right = -16.0
+offset_bottom = -83.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 0
+script = ExtResource("44_xr1we")
+
+[node name="Lines" type="VBoxContainer" parent="EditMode/EditHandles/MemoryEditList/Controller/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="LineEdit" type="LineEdit" parent="EditMode/EditHandles/MemoryEditList/Controller/ScrollContainer/Lines"]
+layout_mode = 2
+mouse_filter = 2
+script = ExtResource("44_1t3cb")
+
+[node name="Grabs" type="Node2D" parent="EditMode/EditHandles"]
+
+[node name="Grab0" type="Button" parent="EditMode/EditHandles/Grabs"]
+offset_left = 130.0
+offset_top = -54.0
+offset_right = 238.0
+offset_bottom = 54.0
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(-130, 54)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_l5q8c")
+action_mode = 0
+icon = ExtResource("37_eaitb")
+flat = true
+script = ExtResource("39_o0tio")
+
+[node name="Grab1" type="Button" parent="EditMode/EditHandles/Grabs"]
+offset_left = 130.0
+offset_top = -54.0
+offset_right = 238.0
+offset_bottom = 54.0
+rotation = -1.0472
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(-130, 54)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_1fxl0")
+icon = ExtResource("37_eaitb")
+flat = true
+script = ExtResource("39_o0tio")
+
+[node name="Grab2" type="Button" parent="EditMode/EditHandles/Grabs"]
+offset_left = 130.0
+offset_top = -54.0
+offset_right = 238.0
+offset_bottom = 54.0
+rotation = -2.0944
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(-130, 54)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qfwq0")
+icon = ExtResource("37_eaitb")
+flat = true
+script = ExtResource("39_o0tio")
+
+[node name="Grab3" type="Button" parent="EditMode/EditHandles/Grabs"]
+offset_left = 130.0
+offset_top = -54.0
+offset_right = 238.0
+offset_bottom = 54.0
+rotation = -3.14159
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(-130, 54)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_i2xfu")
+icon = ExtResource("37_eaitb")
+flat = true
+script = ExtResource("39_o0tio")
+
+[node name="Grab4" type="Button" parent="EditMode/EditHandles/Grabs"]
+offset_left = 130.0
+offset_top = -54.0
+offset_right = 238.0
+offset_bottom = 54.0
+rotation = -4.18879
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(-130, 54)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_i8pxa")
+icon = ExtResource("37_eaitb")
+flat = true
+script = ExtResource("39_o0tio")
+
+[node name="Grab5" type="Button" parent="EditMode/EditHandles/Grabs"]
+offset_left = 130.0
+offset_top = -54.0
+offset_right = 238.0
+offset_bottom = 54.0
+rotation = -5.23599
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(-130, 54)
+theme_override_styles/focus = SubResource("StyleBoxEmpty_xcuic")
+icon = ExtResource("37_eaitb")
+flat = true
+script = ExtResource("39_o0tio")
+
+[node name="ConstInput" type="LineEdit" parent="EditMode/EditHandles"]
+offset_left = -10.0
+offset_top = 11.0
+offset_right = 90.0
+offset_bottom = 61.0
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 25
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+script = ExtResource("40_ydx6f")
+
+[node name="CondEdits" type="Node2D" parent="EditMode/EditHandles"]
+
+[node name="Cond0" type="LineEdit" parent="EditMode/EditHandles/CondEdits"]
+offset_left = 27.0
+offset_top = -5.0
+offset_right = 127.0
+offset_bottom = 45.0
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 25
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+script = ExtResource("40_5tftu")
+
+[node name="Cond1" type="LineEdit" parent="EditMode/EditHandles/CondEdits"]
+offset_left = 10.0
+offset_top = -37.0
+offset_right = 110.0
+offset_bottom = 13.0
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 25
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+script = ExtResource("40_5tftu")
+
+[node name="Cond2" type="LineEdit" parent="EditMode/EditHandles/CondEdits"]
+offset_left = -28.0
+offset_top = -37.0
+offset_right = 72.0
+offset_bottom = 13.0
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 25
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+script = ExtResource("40_5tftu")
+
+[node name="Cond3" type="LineEdit" parent="EditMode/EditHandles/CondEdits"]
+offset_left = -47.0
+offset_top = -5.0
+offset_right = 53.0
+offset_bottom = 45.0
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 25
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+script = ExtResource("40_5tftu")
+
+[node name="Cond4" type="LineEdit" parent="EditMode/EditHandles/CondEdits"]
+offset_left = -28.0
+offset_top = 26.0
+offset_right = 72.0
+offset_bottom = 76.0
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 25
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+script = ExtResource("40_5tftu")
+
+[node name="Cond5" type="LineEdit" parent="EditMode/EditHandles/CondEdits"]
+offset_left = 11.0
+offset_top = 25.0
+offset_right = 111.0
+offset_bottom = 75.0
+scale = Vector2(0.2, 0.2)
+theme_override_font_sizes/font_size = 25
+selecting_enabled = false
+deselect_on_focus_loss_enabled = false
+script = ExtResource("40_5tftu")
+
+[node name="RotationSwitch" type="TextureButton" parent="EditMode/EditHandles"]
+offset_left = -12.0
+offset_top = -14.0
+offset_right = 288.0
+offset_bottom = 286.0
+scale = Vector2(0.084, 0.084)
+texture_normal = ExtResource("41_uaoqn")
+
+[node name="EditButton" type="TextureButton" parent="EditMode/EditHandles"]
+offset_left = -10.0
+offset_top = 10.0
+offset_right = 290.0
+offset_bottom = 310.0
+scale = Vector2(0.065, 0.065)
+texture_normal = ExtResource("42_nkegk")
+
+[node name="KoiHandles" type="Node2D" parent="EditMode"]
+script = ExtResource("47_jdq35")
+
+[node name="Koi0" type="TextureButton" parent="EditMode/KoiHandles"]
+offset_left = -25.0
+offset_top = -25.0
+offset_right = 25.0
+offset_bottom = 25.0
+rotation = -0.247837
+scale = Vector2(0.29, 0.29)
+pivot_offset = Vector2(25, 25)
+texture_normal = ExtResource("28_nakys")
+script = ExtResource("48_jr1aa")
+
+[node name="Koi1" type="TextureButton" parent="EditMode/KoiHandles"]
+offset_left = 190.0
+offset_top = -25.0
+offset_right = 240.0
+offset_bottom = 25.0
+rotation = -0.453786
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(-190, 25)
+texture_normal = ExtResource("28_nakys")
+script = ExtResource("48_jr1aa")
+
+[node name="Koi2" type="TextureButton" parent="EditMode/KoiHandles"]
+offset_left = 190.0
+offset_top = -25.0
+offset_right = 240.0
+offset_bottom = 25.0
+rotation = -0.453786
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(-190, 25)
+texture_normal = ExtResource("28_nakys")
+script = ExtResource("48_jr1aa")
+
+[node name="Koi3" type="TextureButton" parent="EditMode/KoiHandles"]
+offset_left = 190.0
+offset_top = -25.0
+offset_right = 240.0
+offset_bottom = 25.0
+rotation = -0.453786
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(-190, 25)
+texture_normal = ExtResource("28_nakys")
+script = ExtResource("48_jr1aa")
+
+[node name="Koi4" type="TextureButton" parent="EditMode/KoiHandles"]
+offset_left = 190.0
+offset_top = -25.0
+offset_right = 240.0
+offset_bottom = 25.0
+rotation = -0.453786
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(-190, 25)
+texture_normal = ExtResource("28_nakys")
+script = ExtResource("48_jr1aa")
+
+[node name="Koi5" type="TextureButton" parent="EditMode/KoiHandles"]
+offset_left = 190.0
+offset_top = -25.0
+offset_right = 240.0
+offset_bottom = 25.0
+rotation = -0.453786
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(-190, 25)
+texture_normal = ExtResource("28_nakys")
+script = ExtResource("48_jr1aa")
+
+[node name="Koi6" type="TextureButton" parent="EditMode/KoiHandles"]
+offset_left = 190.0
+offset_top = -25.0
+offset_right = 240.0
+offset_bottom = 25.0
+rotation = -0.453786
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(-190, 25)
+texture_normal = ExtResource("28_nakys")
+script = ExtResource("48_jr1aa")
+
+[node name="Koi7" type="TextureButton" parent="EditMode/KoiHandles"]
+offset_left = 190.0
+offset_top = -25.0
+offset_right = 240.0
+offset_bottom = 25.0
+rotation = -0.453786
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(-190, 25)
+texture_normal = ExtResource("28_nakys")
+script = ExtResource("48_jr1aa")
+
+[node name="Koi8" type="TextureButton" parent="EditMode/KoiHandles"]
+offset_left = 190.0
+offset_top = -25.0
+offset_right = 240.0
+offset_bottom = 25.0
+rotation = -0.453786
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(-190, 25)
+texture_normal = ExtResource("28_nakys")
+script = ExtResource("48_jr1aa")
+
+[node name="Koi9" type="TextureButton" parent="EditMode/KoiHandles"]
+offset_left = 190.0
+offset_top = -25.0
+offset_right = 240.0
+offset_bottom = 25.0
+rotation = -0.453786
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(-190, 25)
+texture_normal = ExtResource("28_nakys")
+script = ExtResource("48_jr1aa")
+
+[node name="Koi10" type="TextureButton" parent="EditMode/KoiHandles"]
+offset_left = 190.0
+offset_top = -25.0
+offset_right = 240.0
+offset_bottom = 25.0
+rotation = -0.453786
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(-190, 25)
+texture_normal = ExtResource("28_nakys")
+script = ExtResource("48_jr1aa")
+
+[node name="Koi11" type="TextureButton" parent="EditMode/KoiHandles"]
+offset_left = 190.0
+offset_top = -25.0
+offset_right = 240.0
+offset_bottom = 25.0
+rotation = -0.453786
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(-190, 25)
+texture_normal = ExtResource("28_nakys")
+script = ExtResource("48_jr1aa")
+
+[node name="Console" type="CanvasLayer" parent="."]
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Console"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -688.0
+offset_top = -160.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="Text" type="RichTextLabel" parent="Console/VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+size_flags_vertical = 10
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+scroll_following = true
+autowrap_mode = 1
+script = ExtResource("40_mjxef")
+
+[node name="MenuContainer" type="CanvasLayer" parent="."]
+script = ExtResource("40_5fgra")
+
+[node name="BgControl" type="Control" parent="MenuContainer"]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 37.0
+grow_horizontal = 2
+
+[node name="ColorRect" type="ColorRect" parent="MenuContainer/BgControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.12549, 0.152941, 0.2, 1)
+metadata/_edit_lock_ = true
+
+[node name="MenuContainer" type="Control" parent="MenuContainer/BgControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuBar" type="MenuBar" parent="MenuContainer/BgControl/MenuContainer"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_lock_ = true
+
+[node name="File" type="PopupMenu" parent="MenuContainer/BgControl/MenuContainer/MenuBar"]
+item_count = 3
+item_0/text = "Open"
+item_0/id = 0
+item_1/text = "Save"
+item_1/id = 1
+item_2/text = "Save As"
+item_2/id = 2
+
+[node name="FileOpen" type="FileDialog" parent="."]
+title = "Open a File"
+initial_position = 2
+size = Vector2i(640, 360)
+ok_button_text = "Open"
+file_mode = 0
+access = 2
+
+[node name="FileSave" type="FileDialog" parent="."]
+initial_position = 2
+size = Vector2i(640, 360)
+ok_button_text = "Save"
+access = 2
+
+[connection signal="new_hex_hovered" from="EditMode/CanvasLayer/Coords" to="EditMode/EditHandles" method="_on_coords_new_hex_hovered"]
+[connection signal="new_hex_hovered" from="EditMode/CanvasLayer/Coords" to="EditMode/KoiHandles" method="_on_coords_new_hex_hovered"]
+[connection signal="new_hex_selected" from="EditMode/CanvasLayer/Coords" to="EditMode/CanvasLayer/Tree" method="_on_coords_new_hex_selected"]
+[connection signal="new_hex_selected" from="EditMode/CanvasLayer/Coords" to="EditMode/EditHandles" method="_on_new_hex_selected"]
+[connection signal="cell_selected" from="EditMode/CanvasLayer/Tree" to="EditMode/CanvasLayer/Tree" method="_on_cell_selected"]
+[connection signal="item_collapsed" from="EditMode/CanvasLayer/Tree" to="EditMode/CanvasLayer/Tree" method="_on_item_collapsed"]
+[connection signal="mouse_entered" from="EditMode/CanvasLayer/Tree" to="EditMode/CanvasLayer/Tree" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="EditMode/CanvasLayer/Tree" to="EditMode/CanvasLayer/Tree" method="_on_mouse_exited"]
+[connection signal="user_cell_selected" from="EditMode/CanvasLayer/Tree" to="EditMode/CanvasLayer/HexEditor" method="_on_tree_cell_selected"]
+[connection signal="mouse_entered" from="EditMode/CanvasLayer/EditButtons/NewHex" to="EditMode/CanvasLayer/EditButtons/NewHex" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="EditMode/CanvasLayer/EditButtons/NewHex" to="EditMode/CanvasLayer/EditButtons/NewHex" method="_on_mouse_exited"]
+[connection signal="pressed" from="EditMode/CanvasLayer/EditButtons/NewHex" to="EditMode/CanvasLayer/EditButtons/NewHex" method="_on_pressed"]
+[connection signal="mouse_entered" from="EditMode/CanvasLayer/EditButtons/Edit" to="EditMode/CanvasLayer/EditButtons/Edit" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="EditMode/CanvasLayer/EditButtons/Edit" to="EditMode/CanvasLayer/EditButtons/Edit" method="_on_mouse_exited"]
+[connection signal="pressed" from="EditMode/CanvasLayer/EditButtons/Edit" to="EditMode/CanvasLayer/EditButtons/Edit" method="_on_pressed"]
+[connection signal="mouse_entered" from="EditMode/CanvasLayer/EditButtons/AddKoi" to="EditMode/CanvasLayer/EditButtons/AddKoi" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="EditMode/CanvasLayer/EditButtons/AddKoi" to="EditMode/CanvasLayer/EditButtons/AddKoi" method="_on_mouse_exited"]
+[connection signal="pressed" from="EditMode/CanvasLayer/EditButtons/AddKoi" to="EditMode/CanvasLayer/EditButtons/AddKoi" method="_on_pressed"]
+[connection signal="mouse_entered" from="EditMode/CanvasLayer/SpeedControl" to="EditMode/CanvasLayer/SpeedControl" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="EditMode/CanvasLayer/SpeedControl" to="EditMode/CanvasLayer/SpeedControl" method="_on_mouse_exited"]
+[connection signal="value_changed" from="EditMode/CanvasLayer/SpeedControl" to="EditMode/CanvasLayer/SpeedControl" method="_on_value_changed"]
+[connection signal="hidden" from="EditMode/EditHandles/MemoryEditList/Controller/ScrollContainer" to="EditMode/EditHandles/MemoryEditList/Controller/ScrollContainer" method="_on_mouse_exited"]
+[connection signal="new_constant" from="EditMode/EditHandles/ConstInput" to="EditMode/EditHandles" method="_on_new_constant"]
+[connection signal="pressed" from="EditMode/EditHandles/RotationSwitch" to="EditMode/EditHandles" method="_swap_rotation"]
+[connection signal="pressed" from="EditMode/EditHandles/EditButton" to="EditMode/EditHandles" method="_open_memory_editor"]
+[connection signal="id_pressed" from="MenuContainer/BgControl/MenuContainer/MenuBar/File" to="MenuContainer" method="_on_file_button_press"]
+[connection signal="file_selected" from="FileOpen" to="MenuContainer" method="_on_file_open_selected"]
+[connection signal="file_selected" from="FileSave" to="MenuContainer" method="_on_file_save_selected"]

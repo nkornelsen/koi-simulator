@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://fjctdhg15qx2"]
+
+[ext_resource type="PackedScene" uid="uid://eiooolfw7k44" path="res://hexes/i_operations/i_operation.tscn" id="1_jgro8"]
+[ext_resource type="Script" path="res://hexes/i_operations/set_operation.gd" id="2_48adq"]
+
+[node name="set_operation" instance=ExtResource("1_jgro8")]
+script = ExtResource("2_48adq")

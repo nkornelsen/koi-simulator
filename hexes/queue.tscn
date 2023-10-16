@@ -1,0 +1,119 @@
+[gd_scene load_steps=6 format=3 uid="uid://b78bqpfon0p5h"]
+
+[ext_resource type="PackedScene" uid="uid://ba7vu4lm7v3u7" path="res://base_hexagon.tscn" id="1_fqd8w"]
+[ext_resource type="Script" path="res://hexes/queue.gd" id="2_ybk2c"]
+[ext_resource type="Texture2D" uid="uid://c4mx4wx3dq75x" path="res://Overlays/route_off1_green.png" id="3_68t3c"]
+[ext_resource type="Texture2D" uid="uid://bj2g1rshfh68q" path="res://Overlays/route_off_red.png" id="4_cpq0m"]
+[ext_resource type="Texture2D" uid="uid://qpa82lixf0f1" path="res://Overlays/route_off1.png" id="5_qulaa"]
+
+[node name="Queue" instance=ExtResource("1_fqd8w")]
+script = ExtResource("2_ybk2c")
+in_push = 0
+in_pop = 3
+in_peek = 2
+
+[node name="InputLabels" type="Node2D" parent="." index="2"]
+
+[node name="Push" type="Label" parent="InputLabels" index="0"]
+offset_left = -75.0
+offset_top = -36.0
+offset_right = 75.0
+offset_bottom = 36.0
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(75, 36)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "EnQ"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Pop" type="Label" parent="InputLabels" index="1"]
+offset_left = -75.0
+offset_top = -36.0
+offset_right = 75.0
+offset_bottom = 36.0
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(75, 36)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "DeQ"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Peek" type="Label" parent="InputLabels" index="2"]
+offset_left = -75.0
+offset_top = -36.0
+offset_right = 75.0
+offset_bottom = 36.0
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(75, 36)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Peek"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label" type="Label" parent="." index="3"]
+offset_left = -100.0
+offset_top = -36.0
+offset_right = 100.0
+offset_bottom = 36.0
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(100, 36)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Q"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PopSuccess" type="TextureRect" parent="." index="4"]
+offset_left = -250.0
+offset_top = -288.0
+offset_right = 250.0
+offset_bottom = 289.0
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(250, 288)
+mouse_filter = 2
+texture = ExtResource("3_68t3c")
+
+[node name="PopError" type="TextureRect" parent="." index="5"]
+offset_left = -250.0
+offset_top = -288.0
+offset_right = 250.0
+offset_bottom = 289.0
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(250, 288)
+mouse_filter = 2
+texture = ExtResource("4_cpq0m")
+flip_v = true
+
+[node name="PeekSuccess" type="TextureRect" parent="." index="6"]
+offset_left = -250.0
+offset_top = -288.0
+offset_right = 250.0
+offset_bottom = 289.0
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(250, 288)
+mouse_filter = 2
+texture = ExtResource("3_68t3c")
+
+[node name="PeekError" type="TextureRect" parent="." index="7"]
+offset_left = -250.0
+offset_top = -288.0
+offset_right = 250.0
+offset_bottom = 289.0
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(250, 288)
+mouse_filter = 2
+texture = ExtResource("4_cpq0m")
+flip_v = true
+
+[node name="PushPath" type="TextureRect" parent="." index="8"]
+offset_left = -250.0
+offset_top = -288.0
+offset_right = 250.0
+offset_bottom = 289.0
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(250, 288)
+mouse_filter = 2
+texture = ExtResource("5_qulaa")

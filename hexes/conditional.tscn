@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpnyena7tpefs"]
+
+[ext_resource type="PackedScene" uid="uid://ba7vu4lm7v3u7" path="res://base_hexagon.tscn" id="1_bskgj"]
+[ext_resource type="Script" path="res://hexes/conditional.gd" id="2_dj84i"]
+[ext_resource type="Texture2D" uid="uid://cdynjnlmffrpy" path="res://Overlays/rotation_indicator_small.png" id="3_aau8v"]
+
+[node name="Conditional" instance=ExtResource("1_bskgj")]
+script = ExtResource("2_dj84i")
+conditions = ["F", "F", "F", "F", "F", "F"]
+direction = 0
+
+[node name="RotationDir" type="TextureRect" parent="." index="2"]
+offset_left = -250.0
+offset_top = -288.0
+offset_right = 250.0
+offset_bottom = 289.0
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(250, 288)
+mouse_filter = 2
+texture = ExtResource("3_aau8v")
+
+[node name="CondLabels" type="Node2D" parent="." index="3"]

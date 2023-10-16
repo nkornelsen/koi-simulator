@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://cxl47qp4cg53a"]
+
+[ext_resource type="PackedScene" uid="uid://eiooolfw7k44" path="res://hexes/i_operations/i_operation.tscn" id="1_w5tex"]
+[ext_resource type="Script" path="res://hexes/i_operations/xor_i_operation.gd" id="2_fmfn3"]
+
+[node name="XORIOperation" instance=ExtResource("1_w5tex")]
+script = ExtResource("2_fmfn3")

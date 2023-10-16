@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj6eit3ee8eed"]
+
+[ext_resource type="PackedScene" uid="uid://cb4h4m3t6ug4m" path="res://hexes/binary_operations/binary_operation.tscn" id="1_rr4sk"]
+[ext_resource type="Script" path="res://hexes/binary_operations/div_operation.gd" id="2_8pv4y"]
+
+[node name="DivOperation" instance=ExtResource("1_rr4sk")]
+script = ExtResource("2_8pv4y")

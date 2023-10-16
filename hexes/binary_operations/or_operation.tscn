@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6c0ph5fgyga4"]
+
+[ext_resource type="PackedScene" uid="uid://cb4h4m3t6ug4m" path="res://hexes/binary_operations/binary_operation.tscn" id="1_jtbca"]
+[ext_resource type="Script" path="res://hexes/binary_operations/or_operation.gd" id="2_le74b"]
+
+[node name="OROperation" instance=ExtResource("1_jtbca")]
+script = ExtResource("2_le74b")

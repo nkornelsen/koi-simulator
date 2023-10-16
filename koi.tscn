@@ -1,0 +1,15 @@
+[gd_scene load_steps=2 format=3 uid="uid://btvhobegjvp1w"]
+
+[ext_resource type="Script" path="res://koi.gd" id="1_fapjm"]
+
+[node name="Koi" type="Label"]
+offset_right = 150.0
+offset_bottom = 100.0
+scale = Vector2(0.2, 0.2)
+pivot_offset = Vector2(-18, -12)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = ">:0>"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_fapjm")

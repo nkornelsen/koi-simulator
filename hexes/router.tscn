@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgvug27r3wyms"]
+
+[ext_resource type="PackedScene" uid="uid://ba7vu4lm7v3u7" path="res://base_hexagon.tscn" id="1_3ywvf"]
+[ext_resource type="Script" path="res://hexes/router.gd" id="2_p5ump"]
+
+[node name="Router" instance=ExtResource("1_3ywvf")]
+script = ExtResource("2_p5ump")
+direction = Array[int]([0, 1, 2, 3, 4, 5])
+
+[node name="overlays" type="Node2D" parent="." index="2"]

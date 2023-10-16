@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://eiooolfw7k44"]
+
+[ext_resource type="PackedScene" uid="uid://ba7vu4lm7v3u7" path="res://base_hexagon.tscn" id="1_rrene"]
+[ext_resource type="Script" path="res://hexes/i_operations/i_operation.gd" id="2_q0v76"]
+
+[node name="IOperation" instance=ExtResource("1_rrene")]
+script = ExtResource("2_q0v76")
+operand = 0
+
+[node name="OpLabel" type="Label" parent="." index="2"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -9.0
+offset_top = -9.0
+offset_right = 81.0
+offset_bottom = 81.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.2, 0.2)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "OP"
+horizontal_alignment = 1
+vertical_alignment = 1

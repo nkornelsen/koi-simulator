@@ -1,0 +1,263 @@
+[gd_scene load_steps=13 format=3 uid="uid://b8skrft6ysoqy"]
+
+[ext_resource type="Script" path="res://tile_manager.gd" id="1_nrme7"]
+[ext_resource type="PackedScene" uid="uid://cgvug27r3wyms" path="res://hexes/router.tscn" id="2_co5td"]
+[ext_resource type="PackedScene" uid="uid://jptc1eoy4tpu" path="res://hexes/stream.tscn" id="3_nrcf4"]
+[ext_resource type="PackedScene" uid="uid://dpnyena7tpefs" path="res://hexes/conditional.tscn" id="4_c6rjr"]
+[ext_resource type="PackedScene" uid="uid://cejhawfx2lpgf" path="res://hexes/n_ary_operations/mul_operation.tscn" id="5_u3ecp"]
+[ext_resource type="PackedScene" uid="uid://bj6eit3ee8eed" path="res://hexes/binary_operations/div_operation.tscn" id="6_2wdsq"]
+[ext_resource type="PackedScene" uid="uid://dacpyubcxswqa" path="res://hexes/i_operations/add_i_operation.tscn" id="7_npkvp"]
+[ext_resource type="PackedScene" uid="uid://dcglcfkajyubt" path="res://hexes/n_ary_operations/add_operation.tscn" id="8_c5okt"]
+[ext_resource type="PackedScene" uid="uid://btd1xpjnyh2gp" path="res://hexes/printer.tscn" id="9_qc0pm"]
+[ext_resource type="PackedScene" uid="uid://fjctdhg15qx2" path="res://hexes/i_operations/set_operation.tscn" id="10_xg6dp"]
+[ext_resource type="PackedScene" uid="uid://ikwpwg46kmrw" path="res://hexes/stack.tscn" id="11_orgmt"]
+[ext_resource type="PackedScene" uid="uid://btvhobegjvp1w" path="res://koi.tscn" id="12_qqvm0"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Tiles" type="Node" parent="."]
+script = ExtResource("1_nrme7")
+
+[node name="1_-1" parent="Tiles" instance=ExtResource("2_co5td")]
+position = Vector2(155, 87)
+direction = Array[int]([0, 2, 4, 3, 2, 0])
+location = Vector2i(1, -1)
+
+[node name="-1_0" parent="Tiles" instance=ExtResource("3_nrcf4")]
+position = Vector2(-101, 1)
+location = Vector2i(-1, 0)
+
+[node name="1_0" parent="Tiles" instance=ExtResource("3_nrcf4")]
+position = Vector2(104, 0)
+direction = 4
+location = Vector2i(1, 0)
+
+[node name="0_-1" parent="Tiles" instance=ExtResource("4_c6rjr")]
+position = Vector2(52, 88)
+conditions = ["=0", "F", "F", "=0", "=1", "=2"]
+location = Vector2i(0, -1)
+
+[node name="1_-2" parent="Tiles" instance=ExtResource("3_nrcf4")]
+position = Vector2(106, 177)
+direction = 1
+location = Vector2i(1, -2)
+
+[node name="0_-2" parent="Tiles" instance=ExtResource("3_nrcf4")]
+position = Vector2(2, 176)
+location = Vector2i(0, -2)
+
+[node name="-1_-1" parent="Tiles" instance=ExtResource("3_nrcf4")]
+position = Vector2(-50, 87)
+direction = 1
+location = Vector2i(-1, -1)
+
+[node name="3_1" parent="Tiles" instance=ExtResource("3_nrcf4")]
+position = Vector2(359, -83)
+direction = 4
+location = Vector2i(3, 1)
+
+[node name="2_1" parent="Tiles" instance=ExtResource("3_nrcf4")]
+position = Vector2(258, -85)
+direction = 5
+location = Vector2i(2, 1)
+
+[node name="2_-1" parent="Tiles" instance=ExtResource("3_nrcf4")]
+position = Vector2(258, 88)
+direction = 1
+location = Vector2i(2, -1)
+
+[node name="2_0" parent="Tiles" instance=ExtResource("3_nrcf4")]
+position = Vector2(208, 1)
+location = Vector2i(2, 0)
+
+[node name="3_-1" parent="Tiles" instance=ExtResource("3_nrcf4")]
+position = Vector2(357, 90)
+location = Vector2i(3, -1)
+
+[node name="4_2" parent="Tiles" instance=ExtResource("3_nrcf4")]
+position = Vector2(409, -169)
+direction = 4
+location = Vector2i(4, 2)
+
+[node name="5_0" parent="Tiles" instance=ExtResource("3_nrcf4")]
+position = Vector2(508, 1)
+location = Vector2i(5, 0)
+
+[node name="5_1" parent="Tiles" instance=ExtResource("3_nrcf4")]
+position = Vector2(559, -85)
+direction = 5
+location = Vector2i(5, 1)
+
+[node name="7_0" parent="Tiles" instance=ExtResource("3_nrcf4")]
+position = Vector2(708, 1)
+direction = 3
+location = Vector2i(7, 0)
+
+[node name="3_0" parent="Tiles" instance=ExtResource("5_u3ecp")]
+position = Vector2(308, 2)
+location = Vector2i(3, 0)
+
+[node name="2_2" parent="Tiles" instance=ExtResource("3_nrcf4")]
+position = Vector2(209, -172)
+direction = 5
+location = Vector2i(2, 2)
+
+[node name="0_60" parent="Tiles" instance=ExtResource("6_2wdsq")]
+position = Vector2(1385, -399)
+location = Vector2i(0, 60)
+
+[node name="6_-1" parent="Tiles" instance=ExtResource("3_nrcf4")]
+position = Vector2(659, 86)
+direction = 3
+location = Vector2i(6, -1)
+
+[node name="-1_9" parent="Tiles" instance=ExtResource("7_npkvp")]
+position = Vector2(-50, -592)
+operand = 1
+location = Vector2i(-1, 9)
+
+[node name="-1_10" parent="Tiles" instance=ExtResource("8_c5okt")]
+position = Vector2(-99, -679)
+direction = 0
+location = Vector2i(-1, 10)
+
+[node name="-2_11" parent="Tiles" instance=ExtResource("3_nrcf4")]
+position = Vector2(-149, -765)
+location = Vector2i(-2, 11)
+
+[node name="-1_11" parent="Tiles" instance=ExtResource("3_nrcf4")]
+position = Vector2(-49, -766)
+location = Vector2i(-1, 11)
+
+[node name="0_11" parent="Tiles" instance=ExtResource("3_nrcf4")]
+position = Vector2(51, -765)
+location = Vector2i(0, 11)
+
+[node name="1_11" parent="Tiles" instance=ExtResource("3_nrcf4")]
+position = Vector2(151, -765)
+direction = 5
+location = Vector2i(1, 11)
+
+[node name="-2_9" parent="Tiles" instance=ExtResource("2_co5td")]
+position = Vector2(-150, -593)
+direction = Array[int]([0, 4, 5, 3, 4, 5])
+location = Vector2i(-2, 9)
+
+[node name="-2_10" parent="Tiles" instance=ExtResource("2_co5td")]
+position = Vector2(-200, -679)
+direction = Array[int]([5, 1, 2, 1, 4, 5])
+location = Vector2i(-2, 10)
+
+[node name="1_10" parent="Tiles" instance=ExtResource("9_qc0pm")]
+position = Vector2(101, -678)
+location = Vector2i(1, 10)
+
+[node name="0_10" parent="Tiles" instance=ExtResource("10_xg6dp")]
+position = Vector2(1, -679)
+location = Vector2i(0, 10)
+
+[node name="-2_7" parent="Tiles" instance=ExtResource("10_xg6dp")]
+position = Vector2(-152, -420)
+operand = 66
+location = Vector2i(-2, 7)
+
+[node name="-3_7" parent="Tiles" instance=ExtResource("10_xg6dp")]
+position = Vector2(-252, -421)
+operand = 79
+location = Vector2i(-3, 7)
+
+[node name="-3_8" parent="Tiles" instance=ExtResource("10_xg6dp")]
+position = Vector2(-301, -507)
+operand = 79
+location = Vector2i(-3, 8)
+
+[node name="-3_9" parent="Tiles" instance=ExtResource("10_xg6dp")]
+position = Vector2(-250, -593)
+operand = 79
+location = Vector2i(-3, 9)
+
+[node name="2_10" parent="Tiles" instance=ExtResource("3_nrcf4")]
+position = Vector2(201, -678)
+direction = 3
+location = Vector2i(2, 10)
+
+[node name="0_8" parent="Tiles" instance=ExtResource("3_nrcf4")]
+position = Vector2(0, -506)
+direction = 2
+location = Vector2i(0, 8)
+
+[node name="-1_8" parent="Tiles" instance=ExtResource("3_nrcf4")]
+position = Vector2(-101, -506)
+location = Vector2i(-1, 8)
+
+[node name="-1_6" parent="Tiles" instance=ExtResource("3_nrcf4")]
+position = Vector2(-102, -333)
+direction = 3
+location = Vector2i(-1, 6)
+
+[node name="-2_6" parent="Tiles" instance=ExtResource("3_nrcf4")]
+position = Vector2(-202, -334)
+direction = 3
+location = Vector2i(-2, 6)
+
+[node name="-3_6" parent="Tiles" instance=ExtResource("3_nrcf4")]
+position = Vector2(-302, -334)
+direction = 2
+location = Vector2i(-3, 6)
+
+[node name="-4_7" parent="Tiles" instance=ExtResource("3_nrcf4")]
+position = Vector2(-352, -421)
+direction = 2
+location = Vector2i(-4, 7)
+
+[node name="-4_8" parent="Tiles" instance=ExtResource("3_nrcf4")]
+position = Vector2(-402, -507)
+direction = 1
+location = Vector2i(-4, 8)
+
+[node name="-4_9" parent="Tiles" instance=ExtResource("3_nrcf4")]
+position = Vector2(-351, -593)
+direction = 1
+location = Vector2i(-4, 9)
+
+[node name="-3_10" parent="Tiles" instance=ExtResource("3_nrcf4")]
+position = Vector2(-300, -679)
+location = Vector2i(-3, 10)
+
+[node name="-2_8" parent="Tiles" instance=ExtResource("4_c6rjr")]
+position = Vector2(-201, -507)
+conditions = ["F", "F", "=2", ">=3", "=1", "=0"]
+location = Vector2i(-2, 8)
+
+[node name="6_0" parent="Tiles" instance=ExtResource("11_orgmt")]
+position = Vector2(609, 3)
+location = Vector2i(6, 0)
+
+[node name="Koi" type="Node" parent="."]
+
+[node name="-1_0_0_H" parent="Koi" instance=ExtResource("12_qqvm0")]
+offset_left = 2.0
+offset_top = 1.0
+offset_right = 103.0
+offset_bottom = 73.0
+pivot_offset = Vector2(-15, -10)
+value = 98
+
+[node name="2_2_0_H" parent="Koi" instance=ExtResource("12_qqvm0")]
+value = 3
+
+[node name="4_2_0_H" parent="Koi" instance=ExtResource("12_qqvm0")]
+value = 8
+
+[node name="2_1_3_H" parent="Koi" instance=ExtResource("12_qqvm0")]
+value = 4
+
+[node name="5_0_3_H" parent="Koi" instance=ExtResource("12_qqvm0")]
+value = 4
+
+[node name="7_0_4_L" parent="Koi" instance=ExtResource("12_qqvm0")]
+value = 72
+
+[node name="-1_10_0_H" parent="Koi" instance=ExtResource("12_qqvm0")]
+
+[node name="-1_10_5_H" parent="Koi" instance=ExtResource("12_qqvm0")]

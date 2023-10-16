@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://btd1xpjnyh2gp"]
+
+[ext_resource type="PackedScene" uid="uid://ba7vu4lm7v3u7" path="res://base_hexagon.tscn" id="1_eog3r"]
+[ext_resource type="Script" path="res://hexes/printer.gd" id="2_vdrlc"]
+
+[node name="Printer" instance=ExtResource("1_eog3r")]
+script = ExtResource("2_vdrlc")
+
+[node name="Label" type="Label" parent="." index="2"]
+offset_left = -11.0
+offset_top = -7.0
+offset_right = 108.0
+offset_bottom = 65.0
+scale = Vector2(0.2, 0.2)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
+text = "Print"
+horizontal_alignment = 1
+vertical_alignment = 1
